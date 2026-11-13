@@ -96,7 +96,7 @@ function FoodPage() {
                     ))}
                   </ul>
                   <div className="mt-3 grid grid-cols-2 gap-2">
-                    <div className="rounded-2xl bg-food-soft p-3"><p className="text-xs text-muted-foreground">Carbon Footprint</p><p className="font-display text-2xl font-bold text-food">{result.totalKgCO2e.toFixed(2)} kg CO₂e</p></div>
+                    <div className="rounded-2xl bg-food-soft p-3"><p className="text-xs text-muted-foreground">Carbon Footprint (kg CO₂e)</p><p className="font-display text-2xl font-bold text-food">{result.totalKgCO2e.toFixed(2)} kg CO₂e</p></div>
                     <div className="rounded-2xl bg-muted p-3"><p className="text-xs text-muted-foreground">Calories</p><p className="font-display text-2xl font-bold">{Math.round(result.totalCalories)}</p></div>
                   </div>
                   <p className="mt-3 rounded-2xl bg-secondary p-3 text-sm text-secondary-foreground">💡 {result.tip}</p>
