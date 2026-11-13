@@ -1,6 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import { analyzeImageJson } from "./ai.server";
+import { analyzeImageJson, askAgentAi, type AgentChatMessage } from "./ai.server";
 
 const imageInput = z.object({
   imageDataUrl: z
@@ -107,3 +107,30 @@ export const analyzeBill = createServerFn({ method: "POST" })
         "You read utility and purchase bills/invoices. Extract the vendor, billing period, the number of days that period covers (periodDays; use 1 for a one-off purchase receipt, 30 if a utility bill's period is unclear), the consumption quantity and unit (kWh, litres, kg, m³ — or line items for shopping), total amount and currency. Estimate the carbon footprint in kg CO2e using standard emission factors: electricity India grid 0.71 kg/kWh (CEA), petrol 2.31 kg/L, diesel 2.68 kg/L (DEFRA), LPG 2.98 kg/kg (India GHG Platform), water 0.34 kg/m³ (DEFRA); for shopping use spend-based EPA/DEFRA factors per category. State the factor used and its source (EPA, DEFRA, or India GHG Platform/CEA). Write a one-sentence plain-language summary. If the image is not a bill, set isBill false and numbers to 0.",
     }),
   );
+
+const chatMessageSchema = z.object({
+  role: z.enum(["user", "assistant"]),
+  content: z.string().max(2500),
+});
+
+const askAgentSchema = z.object({
+  prompt: z.string().min(1).max(2500),
+  history: z.array(chatMessageSchema).max(20).optional(),
+  context: z
+    .object({
+      todayKg: z.number().optional(),
+      streak: z.number().optional(),
+      locality: z.string().optional(),
+      recentActions: z.array(z.string()).optional(),
+    })
+    .optional(),
+});
+
+export type AskAgentPayload = z.infer<typeof askAgentSchema>;
+export type { AgentChatMessage };
+
+export const askEcoAgent = createServerFn({ method: "POST" })
+  .inputValidator((d: unknown) => askAgentSchema.parse(d))
+  .handler(async ({ data }) => {
+    return askAgentAi(data);
+  });

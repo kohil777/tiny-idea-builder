@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { SiteHeader, SiteFooter } from "@/components/eco/SiteHeader";
+import { EcoAgentDrawer } from "@/components/eco/EcoAgentDrawer";
 import { Toaster } from "@/components/ui/sonner";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
@@ -137,6 +138,7 @@ function RootComponent() {
         </main>
         <SiteFooter />
       </div>
+      <EcoAgentDrawer />
       <Toaster position="top-center" richColors />
     </QueryClientProvider>
   );

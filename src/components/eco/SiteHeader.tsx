@@ -10,6 +10,8 @@ import {
   Recycle,
   ReceiptText,
   Users,
+  Bot,
+  Sparkles,
   ShieldCheck,
   X,
 } from "lucide-react";
@@ -21,6 +23,7 @@ const NAV = [
   { to: "/waste", label: "Waste" },
   { to: "/reuse", label: "Reuse" },
   { to: "/bills", label: "Bills" },
+  { to: "/agent", label: "AI Agent" },
   { to: "/community", label: "Community" },
   { to: "/privacy", label: "Privacy" },
 ] as const;
@@ -33,6 +36,7 @@ const BOTTOM_NAV = [
 ] as const;
 
 const MORE_NAV = [
+  { to: "/agent", label: "EcoAgent Copilot", desc: "AI guidance on carbon & BBMP waste", icon: Bot },
   { to: "/reuse", label: "Circular Reuse", desc: "Borrow, donate, and thrift items", icon: Recycle },
   { to: "/bills", label: "Utility Bills", desc: "Track electricity, gas, and water", icon: ReceiptText },
   { to: "/community", label: "Community Feed", desc: "Local updates and green ideas", icon: Users },
@@ -112,9 +116,8 @@ export function SiteHeader() {
         <button
           type="button"
           onClick={() => setMoreOpen(true)}
-          className={`flex flex-1 flex-col items-center justify-center py-1 text-[11px] font-medium transition-colors ${
-            moreOpen ? "text-primary font-bold" : "text-muted-foreground hover:text-foreground"
-          }`}
+          className={`flex flex-1 flex-col items-center justify-center py-1 text-[11px] font-medium transition-colors ${moreOpen ? "text-primary font-bold" : "text-muted-foreground hover:text-foreground"
+            }`}
           aria-label="More sections"
         >
           <MoreHorizontal className="size-5" />
