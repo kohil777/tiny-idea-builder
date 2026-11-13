@@ -74,7 +74,7 @@ function CommunityPage() {
                 🔥 {streak}-day green streak
               </Button>
               <Button variant="soft" className="w-full justify-start" onClick={() => share(`I've avoided ${avoided} kg CO₂e by giving items a second life ♻️`)}>
-                ♻️ {avoided} kg avoided via reuse
+                ♻️ {avoided} kg CO₂e avoided via reuse
               </Button>
             </div>
           </Panel>

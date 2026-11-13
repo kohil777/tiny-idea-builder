@@ -67,7 +67,7 @@ function ReusePage() {
                 <SelectTrigger className="mt-2 h-11 rounded-xl"><SelectValue /></SelectTrigger>
                 <SelectContent>
                   {(Object.keys(REUSE_CATEGORIES) as ReuseCategory[]).map((c) => (
-                    <SelectItem key={c} value={c}>{REUSE_CATEGORIES[c].label} · saves ~{REUSE_CATEGORIES[c].avoided} kg</SelectItem>
+                    <SelectItem key={c} value={c}>{REUSE_CATEGORIES[c].label} · saves ~{REUSE_CATEGORIES[c].avoided} kg CO₂e</SelectItem>
                   ))}
                 </SelectContent>
               </Select>

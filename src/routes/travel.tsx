@@ -141,7 +141,7 @@ function TravelPage() {
                       <p className="text-sm font-semibold">{s.reason.startsWith("Carpool") ? "Carpool (3 people)" : TRAVEL_MODES[s.mode].label}</p>
                       <p className="text-xs text-muted-foreground">{s.reason}</p>
                     </div>
-                    <span className="whitespace-nowrap text-sm font-bold text-success">−{s.saving.toFixed(2)} kg</span>
+                    <span className="whitespace-nowrap text-sm font-bold text-success">−{s.saving.toFixed(2)} kg CO₂e</span>
                   </li>
                 ))}
               </ul>

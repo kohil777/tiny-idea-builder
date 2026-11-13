@@ -193,7 +193,7 @@ function WastePage() {
                 {(Object.keys(WASTE_FACTORS) as WasteKind[]).map((k) => (
                   <button key={k} onClick={() => setKind(k)} className={`flex justify-between rounded-xl border p-3 text-sm transition ${kind === k ? "border-waste bg-waste-soft font-semibold" : "border-border hover:bg-muted"}`}>
                     <span>{WASTE_FACTORS[k].label}</span>
-                    <span className="text-muted-foreground">{WASTE_FACTORS[k].factor} kg/kg</span>
+                    <span className="text-muted-foreground">{WASTE_FACTORS[k].factor} kg CO₂e/kg</span>
                   </button>
                 ))}
               </div>

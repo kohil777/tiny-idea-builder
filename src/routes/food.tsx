@@ -91,12 +91,12 @@ function FoodPage() {
                     {result.items.map((it, i) => (
                       <li key={i} className="flex justify-between gap-2 py-2">
                         <span><strong>{it.name}</strong> <span className="text-muted-foreground">· {it.portion}</span></span>
-                        <span className="whitespace-nowrap tabular-nums text-muted-foreground">{Math.round(it.calories)} kcal · {it.kgCO2e.toFixed(2)} kg</span>
+                        <span className="whitespace-nowrap tabular-nums text-muted-foreground">{Math.round(it.calories)} kcal · {it.kgCO2e.toFixed(2)} kg CO₂e</span>
                       </li>
                     ))}
                   </ul>
                   <div className="mt-3 grid grid-cols-2 gap-2">
-                    <div className="rounded-2xl bg-food-soft p-3"><p className="text-xs text-muted-foreground">Carbon</p><p className="font-display text-2xl font-bold text-food">{result.totalKgCO2e.toFixed(2)} kg</p></div>
+                    <div className="rounded-2xl bg-food-soft p-3"><p className="text-xs text-muted-foreground">Carbon Footprint</p><p className="font-display text-2xl font-bold text-food">{result.totalKgCO2e.toFixed(2)} kg CO₂e</p></div>
                     <div className="rounded-2xl bg-muted p-3"><p className="text-xs text-muted-foreground">Calories</p><p className="font-display text-2xl font-bold">{Math.round(result.totalCalories)}</p></div>
                   </div>
                   <p className="mt-3 rounded-2xl bg-secondary p-3 text-sm text-secondary-foreground">💡 {result.tip}</p>

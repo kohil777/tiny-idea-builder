@@ -17,12 +17,12 @@ export function EntryList({ entries, empty, limit = 8 }: { entries: Entry[]; emp
             <p className="text-xs text-muted-foreground">
               {formatDistanceToNow(new Date(e.date), { addSuffix: true })}
               {e.note ? ` · ${e.note}` : ""}
-              {e.spreadDays && e.spreadDays > 1 ? ` · ${(e.kg / e.spreadDays).toFixed(2)} kg/day over ${e.spreadDays} days` : ""}
+              {e.spreadDays && e.spreadDays > 1 ? ` · ${(e.kg / e.spreadDays).toFixed(2)} kg CO₂e/day over ${e.spreadDays} days` : ""}
             </p>
           </div>
           <span className={`font-display font-bold tabular-nums ${e.category === "reuse" ? "text-success" : "text-forest"}`}>
             {e.category === "reuse" ? "−" : ""}
-            {e.kg.toFixed(2)} kg
+            {e.kg.toFixed(2)} kg CO₂e
           </span>
           <button
             onClick={() => eco.removeEntry(e.id)}

@@ -132,7 +132,7 @@ function RootComponent() {
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <div className="flex min-h-screen flex-col">
         <SiteHeader />
-        <main className="flex-1">
+        <main className="flex-1 pb-20 md:pb-0">
           <Outlet />
         </main>
         <SiteFooter />

@@ -74,9 +74,9 @@ function Dashboard() {
         </button>
       </div>
 
-      <div className="grid gap-5 lg:grid-cols-3">
+      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {/* Today */}
-        <section className="relative overflow-hidden rounded-3xl bg-forest p-6 text-forest-foreground shadow-lift lg:col-span-2">
+        <section className="relative overflow-hidden rounded-3xl bg-forest p-6 text-forest-foreground shadow-lift md:col-span-2">
           <div className="absolute inset-0 bg-glow opacity-40" />
           <div className="relative flex flex-wrap items-start justify-between gap-4">
             <div>
@@ -86,7 +86,7 @@ function Dashboard() {
                 <span className="ml-2 text-2xl font-bold opacity-80">kg CO₂e</span>
               </p>
               <p className="mt-2 flex items-center gap-1.5 text-sm opacity-80">
-                <Target className="size-4" /> Daily target {DAILY_TARGET_KG} kg
+                <Target className="size-4" /> Daily target {DAILY_TARGET_KG} kg CO₂e
               </p>
             </div>
             {stats.change !== null && stats.total > 0 && (
@@ -108,7 +108,7 @@ function Dashboard() {
                 </div>
                 <p className={`mt-2 font-display text-xl font-bold tabular-nums ${CATEGORY_STYLE[c].text}`}>
                   {c === "reuse" && stats.byCat[c] > 0 ? "−" : ""}
-                  {stats.byCat[c].toFixed(1)} kg
+                  {stats.byCat[c].toFixed(1)} kg CO₂e
                 </p>
                 {c === "reuse" && <p className="text-[11px] text-muted-foreground">avoided</p>}
               </Link>
@@ -121,7 +121,7 @@ function Dashboard() {
           <p className="font-display text-5xl font-extrabold text-primary">
             {stats.streak} <span className="text-2xl">days</span>
           </p>
-          <p className="mt-1 text-sm text-muted-foreground">Days logged and kept under {DAILY_TARGET_KG} kg.</p>
+          <p className="mt-1 text-sm text-muted-foreground">Days logged and kept under {DAILY_TARGET_KG} kg CO₂e.</p>
           <div className="mt-5 flex justify-between">
             {stats.week.map((w, i) => (
               <div key={i} className="flex flex-col items-center gap-1.5">
@@ -133,15 +133,15 @@ function Dashboard() {
             ))}
           </div>
           <div className="mt-5 flex items-center gap-2 rounded-2xl bg-reuse-soft p-3 text-sm">
-            <Leaf className="size-4 text-reuse" /> <span><strong>{stats.avoided} kg</strong> avoided through reuse</span>
+            <Leaf className="size-4 text-reuse" /> <span><strong>{stats.avoided} kg CO₂e</strong> avoided through reuse</span>
           </div>
         </Panel>
 
         {/* Week chart */}
-        <Panel title="Last 7 days" className="lg:col-span-2">
+        <Panel title="Last 7 days (kg CO₂e)" className="md:col-span-2">
           <div className="relative flex h-48 items-end gap-3">
             <div className="pointer-events-none absolute inset-x-0 border-t-2 border-dashed border-waste/60" style={{ bottom: `${(DAILY_TARGET_KG / maxWeek) * 100}%` }}>
-              <span className="absolute -top-5 right-0 text-[11px] font-semibold text-waste">target</span>
+              <span className="absolute -top-5 right-0 text-[11px] font-semibold text-waste">target ({DAILY_TARGET_KG} kg CO₂e)</span>
             </div>
             {stats.week.map((w, i) => (
               <div key={i} className="flex h-full flex-1 flex-col items-center justify-end gap-2">
@@ -157,7 +157,7 @@ function Dashboard() {
         </Panel>
 
         {/* Community */}
-        <Panel title="Community Feed" icon={<Heart className="size-5 text-destructive" />}>
+        <Panel title="Community Feed" icon={<Heart className="size-5 text-destructive" />} className="md:col-span-2 lg:col-span-1">
           <ul className="space-y-4">
             {feed.slice(0, 3).map((p) => (
               <li key={p.id} className="flex gap-3">
@@ -177,7 +177,7 @@ function Dashboard() {
           <Link to="/community" className="mt-4 inline-block text-sm font-semibold text-primary">Open community →</Link>
         </Panel>
 
-        <Panel title="Recent activity" className="lg:col-span-3">
+        <Panel title="Recent activity" className="md:col-span-2 lg:col-span-3">
           <EntryList entries={entries} empty="Nothing logged yet — snap a meal or log a trip to start." limit={6} />
         </Panel>
       </div>
