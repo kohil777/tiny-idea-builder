@@ -132,3 +132,4 @@ export function MarkdownContent({ content, className = "" }: { content: string; 
 
   return <div className={`space-y-1 ${className}`}>{elements}</div>;
 }
+

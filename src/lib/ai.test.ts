@@ -43,3 +43,4 @@ describe("EcoAgent AI Copilot", () => {
     }
   });
 });
+
